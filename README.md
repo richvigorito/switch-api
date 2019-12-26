@@ -1,4 +1,4 @@
-# rest api for switch controlls build in Python Flask framework
+# Switch Controller REST API built in Python Flask framework
 ### Build and run docker container with Flask RESTful API
 
 Clone repo `git clone https://github.com/richvigorito/switch-api.git`
