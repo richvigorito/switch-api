@@ -38,10 +38,14 @@ def switch_action(switch_id):
         rf_port = config.get("SWITCH", "Port")
         action = request.form["action"]
         switch_cmd = "echo 'rf " + switch_id + " " + action + " '| nc " + rf_host + " " + rf_port 
+        process = subprocess.Popen(switch_cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        err = process.stderr.read()
+        if err: 
+            raise Exception (err)
         message = switch_id + " " + action.upper() + " accepted. executed: " + switch_cmd
         return jsonify({"status": "success", "payload": message}),status.HTTP_202_ACCEPTED
     except Exception as e :
-        return jsonify({"status": "failed", "payload": "Bad Request", "exception": e}),status.HTTP_400_BAD_REQUEST
+        return jsonify({"status": "failed", "payload": "Bad Request", "exception": str(e)}),status.HTTP_400_BAD_REQUEST
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True, port=80)

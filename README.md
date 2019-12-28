@@ -3,7 +3,7 @@
 
 Clone repo `git clone https://github.com/richvigorito/switch-api.git`
 
-Chande directory `cd switch-api`
+Change directory `cd switch-api`
 
 Build image `docker build -t switch-api .` 
   
