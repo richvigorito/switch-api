@@ -4,7 +4,9 @@ from pymongo import MongoClient
 from bson import json_util, ObjectId
 import configparser, datetime, json, os, subprocess
 
-import switch_classes
+from ha_classes import house as ha_house
+from ha_classes import x10 as ha_x10
+from ha_classes import zwave as ha_zwave
 
 app = Flask(__name__)
 
@@ -75,7 +77,7 @@ def switch_action(switch_id):
         return jsonify({"status": "failed", "payload": "Bad Request", "exception": str(e)}),status.HTTP_400_BAD_REQUEST
 
 
-myHouse = switch_classes.House('Richs Rad Pad')
+myHouse = ha_house.House('Richs Rad Pad')
 
 
 
