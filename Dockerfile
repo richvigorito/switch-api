@@ -1,8 +1,8 @@
-FROM python:3.5
+FROM python:3.7
 
 RUN apt-get update
 RUN apt-get install -y --no-install-recommends \
-        libatlas-base-dev gfortran nginx supervisor vim git netcat
+        libatlas-base-dev gfortran nginx supervisor vim git netcat locate
 
 RUN pip3 install uwsgi
 
